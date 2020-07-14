@@ -1,10 +1,10 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var lowerCases = "abcdefghiklmnopqrstuvwxyz";
-var upperCases = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
-var numbers = "0123456789";
-var specialCharacters = "!@#$%^&*()";
 
+var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var lowerCases = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperCases = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var specialCharacters = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
 
 // Write password to the #password input
 function writePassword() {
@@ -17,75 +17,55 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+
 // Prompts for password criteria
 function generatePassword() {
   var passwordLength = prompt("Choose a number of characters for your password. It must be at least 8 characters and no more than 128 characters.");
-  var lowerCases = confirm("Do you want lowercases in your password?");
-  var upperCases = confirm("Do you want uppercases in your password?");
-  var numbers = confirm("Do you want numbers in your password?");
-  var special = confirm("Do you want special characters in your password?");
-  var minimumCount = 0;
-  var minimumNumbers = "0123456789";
-  var minimumLowerCases = "abcdefghiklmnopqrstuvwxyz";
-  var minimumUpperCases = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
-  var minimumSpecialCharacters = "!@#$%^&*()";
   
-//Generator functions
-  var functionArray = {
-    getLowerCases: function() {
-      return String.fromCharCode(Math.floor(Math.random() * 26 + 80));
-    },
-    getUpperCases: function() {
-      return String.fromCharCode(Math.floor(Math.random() * 26 + 80));
-    },
-    getNumbers: function() {
-      return String.fromCharCode(Math.floor(Math.random() * 10 + 30));
-    },
-    getSpecialCharacters: function() {
-      return specialCharacters[Math.floor(Math.random() * 10)]
-    }
-  };
+  
+// Variables  
+var passwordLength = "";
+var confirmNumbers;
+var confirmLowerCases;
+var confirmUpperCases;
+var confirmSpecialCharacters;
   
   //Check to make sure user selected ok for all and uses empty minimums from above
-  if (numbers === true) {
-    minimumNumbers = functionArray.getNumbers();
-    minimumCount++;
+  if (passwordLength <= 7 || passwordLength >= 129) {
+    alert("Password length must be between 8-50 characters. Try again please.");
+    var passwordLength = (prompt("Choose a number of characters for your password. It must be at least 8 characters and no more than 128 characters."));
   }
-  if (lowerCases === true) {
-    minimumLowerCases = functionArray.getLowerCases ();
-    minimumCount++;
+    alert(`Your password will have ${passwordLength} characters`); {
+    
+    var confirmLowerCases = confirm("Do you want lowercases in your password?");
+    var confirmUpperCases = confirm("Do you want uppercases in your password?");
+    var confirmNumbers = confirm("Do you want numbers in your password?");
+    var confirmSpecialCharacters = confirm("Do you want special characters in your password?");
   }
-  if (upperCases === true) {
-    minimumUpperCases = functionArray.getUpperCases();
-    minimumCount++;
+
+  var passwordCharacters = []
+  if (confirmSpecialCharacters) {
+    passwordCharacters = passwordCharacters.concat(specialCharacters)
   }
-  if (special === true) {
-    minimumSpecialCharacters = functionArray.getSpecialCharacters();
-    minimumCount++;
+
+  if (confirmNumbers) {
+    passwordCharacters = passwordCharacters.concat(numbers)
+  }
+    
+  if (confirmLowerCases) {
+    passwordCharacters = passwordCharacters.concat(lowerCases)
+  }
+
+  if (confirmUpperCases) {
+    passwordCharacters = passwordCharacters.concat(upperCases)
   }
   
-  var randomPasswordGenerated = "";
-  
-  for (let i = 0; i < (parseInt(passwordLength) - minimumCount); i++) {
-    var randomNumberPicked = Math.floor(Math.random() * 1);
-    randomPasswordGenerated += randomNumberPicked;
-  }
-  
-  //empty string variable for the for next loop 
+  //empty string variable for the for loop 
   var randomPasswordGenerated = "";
 
   // loop getting random characters
-  for (let i = 0; i < (parseInt(passwordLength) - minimumCount); i++) {
-    var randomNumberPicked = Math.floor(Math.random() * 4);
-    randomPasswordGenerated += randomNumberPicked;
+  for (var i = 0; i < passwordLength; i++) {
+    randomPasswordGenerated = randomPasswordGenerated + passwordCharacters[Math.floor(Math.random() * passwordCharacters.length)];
   }
-  
-  randomPasswordGenerated += minimumNumbers;
-  randomPasswordGenerated += minimumLowerCases;
-  randomPasswordGenerated += minimumUpperCases;
-  randomPasswordGenerated += minimumSpecialCharacters;
-
-
   return randomPasswordGenerated;
- 
 }
