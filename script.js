@@ -18,7 +18,7 @@ generateBtn.addEventListener("click", writePassword);
 
 // Prompts for password criteria
 function generatePassword() {
-  var passwordLength = prompt("Choose a number of characters for your password. It must be at least 8 characters and no more than 128 characters.");
+  var passwordLength = prompt("Choose a number of characters for your password.");
   
 // Variables  
 var passwordLength = "";
@@ -28,7 +28,7 @@ var confirmUpperCases;
 var confirmSpecialCharacters;
   
 //Setting up criteria
-  if (passwordLength <= 7 || passwordLength >= 129 ) {
+  while (passwordLength <= 7 || passwordLength >= 129 ) {
     alert("Password length must be between 8-128 characters. Please try again");
     var passwordLength = (prompt("Choose a number of characters for your password. It must be at least 8 characters and no more than 128 characters."));
     }  
