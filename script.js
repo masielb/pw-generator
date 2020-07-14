@@ -16,18 +16,18 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// Prompts for password criteria
-function generatePassword() {
-  var passwordLength = prompt("Choose a number of characters for your password.");
-  
 // Variables  
 var passwordLength = "";
 var confirmNumbers;
 var confirmLowerCases;
 var confirmUpperCases;
 var confirmSpecialCharacters;
+
+// Prompts for password criteria
+function generatePassword() {
+  var passwordLength = (prompt("Choose a number of characters for your password."));
   
-//Setting up criteria
+  //Setting up criteria
   while (passwordLength <= 7 || passwordLength >= 129 ) {
     alert("Password length must be between 8-128 characters. Please try again");
     var passwordLength = (prompt("Choose a number of characters for your password. It must be at least 8 characters and no more than 128 characters."));
@@ -38,6 +38,16 @@ var confirmSpecialCharacters;
     var confirmUpperCases = confirm("Do you want uppercases in your password?");
     var confirmNumbers = confirm("Do you want numbers in your password?");
     var confirmSpecialCharacters = confirm("Do you want special characters in your password?");
+    
+    // Loop if answer is outside the parameters 
+    while(confirmUpperCases === false && confirmLowerCases === false && confirmSpecialCharacters === false && confirmNumbers === false) {
+      alert("You must choose at least one parameter");
+      var confirmSpecialCharacters = confirm("Click OK to confirm if you would like to include special characters");
+      var confirmNumbers = confirm("Click OK to confirm if you would like to include numeric characters");    
+      var confirmLowerCases = confirm("Click OK to confirm if you would like to include lowercase characters");
+      var confirmUpperCases = confirm("Click OK to confirm if you would like to include uppercase characters");   
+  } 
+
   }
 
   var passwordCharacters = []
