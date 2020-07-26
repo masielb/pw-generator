@@ -1,11 +1,24 @@
 # pw-generator
 Homework 3: Password Generator
 
-This homework consisted of a challenging task to develop a password generator. The password generator asks the user questions first like to determine the following: 
-- prefered password length,
-- whether they want to use lower case or upper case letters,
-- and whether or not they want to utilize numbers and/or special characters. 
+## Summary
+This application is a basic password generator. In order to utilize this took, the user is asked to determine the following: 
 
-After the criteria is established, the password appears in the text box on the page.
+- prefered password length
+- whether they want lower case letters
+- whether they want upper case letters
+- whether they want numbers 
+- whether they want special characters
 
-My password generator processes the user's responses and creates a password accordingly. Overall, I think this exercise was helpful to consider how javascript can play a role in creating a real tool that people can apply to their lives.
+After the criteria is established, the password will appear in the text box on the page.
+
+Link: https://masielb.github.io/pw-generator/
+
+## Site Picture 
+![app](pw-gen.png)
+
+## Built With
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [Boostrap](https://getbootstrap.com/)
